@@ -1,0 +1,49 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa; /* Color de fondo similar a Bootstrap */
+  margin: 20px;
+}
+.container {
+  margin: auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.input-container {
+  display: flex;
+  align-items: center;
+  margin-top: 5px; /* Espacio reducido entre el texto y el input */
+}
+.input-container input {
+  flex: 1; /* El campo de entrada toma el espacio restante */
+  padding: 10px;
+  border: 1px solid #ced4da; /* Borde similar al de Bootstrap */
+  border-radius: 4px;
+  margin-right: 10px; /* Espacio entre el input y el botón */
+}
+.input-container button {
+  padding: 10px 15px; /* Tamaño del botón */
+  border: 1px solid #6c757d; /* Borde del botón */
+  border-radius: 4px;
+  background-color: white; /* Fondo del botón */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  transition: background-color 0.3s; /* Transición de color */
+}
+.input-container button:hover {
+  background-color: #e9ecef; /* Color al pasar el mouse */
+}
+.process-button {
+  margin-top: 20px; /* Espacio arriba del botón PROCESAR */
+  padding: 10px 15px; /* Tamaño del botón PROCESAR */
+  border: none; /* Sin borde */
+  border-radius: 4px;
+  background-color: #007bff; /* Color de fondo del botón PROCESAR */
+  color: white; /* Color del texto */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  transition: background-color 0.3s; /* Transición de color */
+  width: 100%; /* Ancho completo */
+}
+.process-button:hover {
+  background-color: #0056b3; /* Color al pasar el mouse */
+}
