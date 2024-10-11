@@ -1,6 +1,9 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow, dialog, ipcMain } = require('electron')
 const path = require('path')
+const fs = require('fs');
+const Photosaic = require('photosaic').default;
+const { globSync } = require('glob')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -71,5 +74,20 @@ ipcMain.on('select', async (event, { id, type }) => {
 });
 
 ipcMain.on('process', async (event, value) => {
-    console.log(value);
-});
+    const images = globSync(`${value.imagesDir}/**/*.{png,jpeg,jpg`, {nocase:true})
+
+    const mosaic = Photosaic(
+        value.imageMosaic,
+        images.slice(0,2000),
+        {
+          gridNum: 100,
+          outputWidth: 5000,
+          algo: 'random'
+        }
+    );
+
+  const fileName = `archivo_${new Date().toISOString().replace(/[-:T]/g, '')}.png`;
+  const finalMosaicBuffer = await mosaic.build()
+  await fs.promises.writeFile(`${value.imageOutput}/${fileName}`, finalMosaicBuffer)
+
+})
